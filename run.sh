@@ -39,7 +39,7 @@ update_nat() {
     if ${IPTABLES} -t nat -C POSTROUTING -d ${subnet} \
         -m comment --comment "${comment}" -j MASQUERADE \
         2>/dev/null; then
-      log "NAT rule ${comment} is installed"
+      #log "NAT rule ${comment} is installed"
       return
     fi
   fi
@@ -78,7 +78,7 @@ main() {
       done
     fi
 
-    if [[ -z ${nat_rules} ]]; then
+    if [[ -z "${nat_rules}" ]]; then
       log "No NAT rules configured"
     else
       for subnet in ${old_nat_rules}; do
